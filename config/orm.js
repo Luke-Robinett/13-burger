@@ -11,9 +11,9 @@ const orm = {
    cb(result);
   });
  },
- insertOne: (burgerName, cb) => {
-  const queryText = "insert into burgers (name) ?";
-  const params = [burgerName];
+ insertOne: (name, cb) => {
+  const queryText = "insert into burgers (name, devoured) values(?, FALSE)";
+  const params = [name];
   connection.query(queryText, params, (err, result) => {
    if (err) throw err;
 
@@ -22,8 +22,8 @@ const orm = {
   })
  },
  updateOne: (burger, cb) => {
-  const queryText = "update burgers set name = ?, devoured = ? where id = ?";
-  const params = [burger.name, burger.devoured, burger.id];
+  const queryText = "update burgers set devoured = ? where id = ?";
+  const params = [burger.devoured, burger.id];
   connection.query(queryText, params, (err, result) => {
    if (err) throw err;
 
