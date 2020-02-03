@@ -1,32 +1,28 @@
 const express = require("express");
 const burger = require("../models/burger");
 
-const app = express();
-const PORT = process.env.PORT || 8080;
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+const router = express.Router();
 
-app.get("/api/burgers", (req, res) => {
+router.get("/", (req, res) => {
  burger.getAll(result => {
-  res.json(result);
+  console.table(result);
+  res.render("index", { burgers: result });
  });
 });
 
-app.post("/api/burgers", (req, res) => {
+router.post("/api/burgers", (req, res) => {
  burger.add(req.body.name, result => {
-  res.json(result);
+  res.json({ id: result.insertId });
  });
 });
 
-app.put("/api/burgers/:id", (req, res) => {
+router.put("/api/burgers/:id", (req, res) => {
  burger.devour(req.params.id, result => {
-  res.json(result);
+  if (result.changedRows === 0) {
+   return res.status(404).end();
+  }
+  res.status(200).end();
  });
 });
 
-app.listen(PORT, err => {
- if (err) throw err;
- console.log("Listening on port " + PORT);
-});
-
-module.exports = app;
+module.exports = router;

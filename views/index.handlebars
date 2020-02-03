@@ -1,0 +1,34 @@
+<br>
+<h2>Enter a burger to add to the waiting area</h2>
+<form>
+ <label for="nameField">Burger Name:</label><br>
+ <input id="nameField"> &nbsp;
+ <input type="submit" value="Add Burger">
+</form
+
+<br>
+
+<div class="row">
+ <div class="col-12 col-md-6">
+
+  <h3>Burgers To Devour</h3>
+  {{#each burgers}}
+  {{#unless devoured}}
+  <div class="p-2 justify-content-center w-100">
+   <button class="devour-btn btn-danger w-75" data-id={{id}}>Devour {{name}}!</button>
+  </div>
+  {{/unless}}
+  {{/each}}
+ </div>
+
+ <div class="col-12 col-md-6">
+  <h3>Devoured Burgers</h3>
+  {{#each burgers}}
+  {{#if devoured}}
+  <div class="p-2 justify-content-center w-100">
+   <div class="bg-success text-white w-75" data-id={{id}}>{{name}}</div>
+  </div>
+  {{/if}}
+  {{/each}}
+ </div>
+</div>

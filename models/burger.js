@@ -11,8 +11,8 @@ const burger = {
    cb(result);
   });
  },
- devour: (id, cb) => {
-  orm.updateOne(id, result => {
+ devour: (burgerId, cb) => {
+  orm.updateOne( {id: burgerId, devoured: 1}, result => {
    cb(result);
   });
  }

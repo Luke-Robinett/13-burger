@@ -6,8 +6,6 @@ const orm = {
   connection.query(queryText, (err, result) => {
    if (err) throw err;
 
-   console.log(queryText);
-   console.table(result);
    cb(result);
   });
  },
@@ -17,7 +15,6 @@ const orm = {
   connection.query(queryText, params, (err, result) => {
    if (err) throw err;
 
-   console.log(`Inserted ${result.affectedRows} row(s)`);
    cb(result);
   })
  },
@@ -27,7 +24,6 @@ const orm = {
   connection.query(queryText, params, (err, result) => {
    if (err) throw err;
 
-   console.log(`Updated ${result.affectedRows} row(s)`);
    cb(result);
   })
  }
