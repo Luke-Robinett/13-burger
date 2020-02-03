@@ -12,6 +12,18 @@ app.get("/api/burgers", (req, res) => {
  });
 });
 
+app.post("/api/burgers", (req, res) => {
+ burger.add(req.body.name, result => {
+  res.json(result);
+ });
+});
+
+app.put("/api/burgers/:id", (req, res) => {
+ burger.devour(req.params.id, result => {
+  res.json(result);
+ });
+});
+
 app.listen(PORT, err => {
  if (err) throw err;
  console.log("Listening on port " + PORT);
