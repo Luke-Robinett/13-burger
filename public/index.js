@@ -8,13 +8,13 @@ $(document).ready(function () {
     }
 
     $.ajax("/api/burgers",
-    {
-      type: "POST",
-      data: {name: burgerName}
-    }).then(function(result) {
-      console.log(result);
-      location.reload();
-    });
+      {
+        type: "POST",
+        data: { name: burgerName }
+      }).then(function (result) {
+        console.log(result);
+        location.reload();
+      });
   });
 
   $(".devour-btn").click(function (event) {
@@ -25,7 +25,12 @@ $(document).ready(function () {
         type: "PUT"
       }).then(function (response) {
         console.log(response);
-        location.reload();
+
+        document.getElementById("chomp").play();
+
+        setTimeout(function () {
+          location.reload();
+        }, 500);
       });
   });
 });
