@@ -1,6 +1,7 @@
 const mysql = require("mysql");
 
-/*
+var connection;
+
 if (process.env.JAWSDB_URL) {
  connection = mysql.createConnection(process.env.JAWSDB_URL);
 } else {
@@ -13,7 +14,8 @@ if (process.env.JAWSDB_URL) {
   }
  );
 }
-*/
+
+/*
 const connection = mysql.createConnection(
  {
   host: "etdq12exrvdjisg6.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
@@ -23,6 +25,8 @@ const connection = mysql.createConnection(
   database: "p6xumzulyz0pyrkr"
  }
 );
+*/
+
 connection.connect(err => {
  if (err) throw err;
 
