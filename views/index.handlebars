@@ -3,8 +3,7 @@
  <label for="nameField">Burger Name:</label> &nbsp;
  <input id="nameField"> &nbsp;
  <input type="submit" value="Add Burger">
-</form
-<br>
+</form <br>
 
 <div class="row">
  <div class="col-12 col-md-6">
@@ -12,8 +11,11 @@
   <h3>Burgers To Devour</h3>
   {{#each burgers}}
   {{#unless devoured}}
-  <div class="p-2 justify-content-center w-100">
-   <button class="devour-btn btn-danger w-75" data-id={{id}}>Devour {{name}}!</button>
+  <div class="p-2 w-100 rounded">
+   <button class="devour-btn btn-danger w-75 text-left" data-id={{id}}>
+    <i class="text-white fas fa-hamburger fa-2x"></i>
+    Devour {{name}}!
+   </button>
   </div>
   {{/unless}}
   {{/each}}
@@ -23,8 +25,11 @@
   <h3>Devoured Burgers</h3>
   {{#each burgers}}
   {{#if devoured}}
-  <div class="p-2 justify-content-center w-100">
-   <div class="bg-success text-white w-75" data-id={{id}}>{{name}}</div>
+  <div class="p-2 w-100 rounded">
+   <button class="btn-success w-75 text-left" disabled>
+    <i class="text-white fas fa-hamburger fa-2x"></i>
+    {{name}}
+   </button>
   </div>
   {{/if}}
   {{/each}}
